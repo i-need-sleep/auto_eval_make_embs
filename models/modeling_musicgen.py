@@ -21,8 +21,6 @@ from dataclasses import dataclass
 from typing import Any, Dict, Optional, Tuple, Union
 from time import sleep
 
-from icecream import ic
-
 import torch
 import torch.nn as nn
 from torch.nn import CrossEntropyLoss

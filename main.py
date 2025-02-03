@@ -100,11 +100,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     if args.all:
-
-        jukemir_representation.main(args.input_dir, f'{args.output_dir}/jukebox_5b')
-
         for model_type in ['vggish', 'musicgen_small', 'musicgen_medium', 'mert_330m', 'clap_l_aud']:
             args.model_type = model_type
             main(args)
-
         
+        os.makedirs(f'{args.output_dir}/jukebox_5b', exist_ok=True)
+        jukemir_representation.main(args.input_dir, f'{args.output_dir}/jukebox_5b')

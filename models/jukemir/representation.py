@@ -192,8 +192,6 @@ def main(input_dir, output_dir):
                 representation = get_acts_from_file(
                     input_path, hps, vqvae, top_prior, meanpool=AVERAGE_SLICES
                 )
-                print(representation.shape)
-                exit()
             
             np.save(output_path, representation)
         except Exception as e:
@@ -205,20 +203,18 @@ if __name__ == "__main__":
     folder_root_a = '/data/sony/samples/musicgen'
     folder_root_b = '/data/sony/samples'
     folder_roots = [folder_root_a, folder_root_b]
-    folders = ['/mnt/sdb/willhuang/music_eval_storage/data/generated/riffusion/seed_1']
+    folders = []
     # for folder_root in folder_roots:
     #     for folder in os.listdir(folder_root):
     #         if not os.path.isdir(os.path.join(folder_root, folder, 'seed_3')):
     #             continue
     #         folders.append(os.path.join(folder_root, folder, 'seed_3'))
-    # folders.append('/data/sony/samples/musicldm/seed_3/seed_3')
-    # folders.append('/data/sony/samples/musicldm/seed_1/seed_1')
-    folders.append('/mnt/sdb/willhuang/music_eval_storage/data/generated/riffusion_inst/seed_1')
-    folders.append('/mnt/sdb/willhuang/music_eval_storage/data/generated/riffusion_inst/seed_3')
+    folders.append('/data/sony/samples/audioldm2/seed_1/seed_1')
+    folders.append('/data/sony/samples/musicldm/seed_1/seed_1')
 
     for folder in sorted(folders, reverse=False):
         input_dir = folder
-        output_dir = os.path.join(output_root, folder.replace('/seed_3', '').split('/')[-1])
+        output_dir = os.path.join(output_root, folder.replace('/seed_1', '').split('/')[-1])
         # If the output directory exists, skip
         # if os.path.exists(output_dir):
         #     continue
